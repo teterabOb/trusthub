@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { MdVerifiedUser } from "react-icons/md";
 
 export const CardUser = () => {
@@ -7,7 +8,7 @@ export const CardUser = () => {
       className="flex flex-row justify-center items-center w-full max-w-[350px] rounded-3xl p-5"
     >
       <div className="flex flex-col justify-center items-center w-1/2 gap-0.5">
-        <img
+        <Image
           className="rounded-full w-28 h-28"
           src="https://cdn.urbantecno.com/urbantecno/s/2023-01-05-11-27-elon-musk.png"
           alt="user"
