@@ -1,23 +1,26 @@
 import { type NextRequest } from "next/server";
-import { getMatchingUsers } from "~~/services/creteria";
+import { getCriteriaForUser, getLevel } from "~~/services/criteria";
+import { getUser } from "~~/services/user";
 
-interface Params {
-  params: {
-    criteriaList: string;
-  };
-}
+export async function GET(request: NextRequest) {
+  const user = getUser(request.headers.get("authorization"))!;
 
-export async function GET(request: NextRequest, { params }: Params) {
-  const { criteriaList } = params;
+  const criteriaForUser = await getCriteriaForUser(user);
+  const positiveCriteria = Object.values(criteriaForUser).filter(criteriaValue => criteriaValue).length;
 
-  const criteriaForUser = await getMatchingUsers(criteriaList.split(","));
-
-  return Response.json(criteriaForUser, {
-    status: 200,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  return Response.json(
+    {
+      userId: user.id,
+      ...criteriaForUser,
+      level: getLevel(positiveCriteria),
     },
-  });
+    {
+      status: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      },
+    },
+  );
 }
