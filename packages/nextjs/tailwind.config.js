@@ -1,4 +1,13 @@
 /** @type {import('tailwindcss').Config} */
+
+import colors from 'tailwindcss/colors'
+
+delete colors.lightBlue
+delete colors.warmGray
+delete colors.trueGray
+delete colors.coolGray
+delete colors.blueGray
+
 module.exports = {
   content: ["./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}", "./utils/**/*.{js,ts,jsx,tsx}"],
   plugins: [require("daisyui")],
@@ -9,17 +18,17 @@ module.exports = {
     themes: [
       {
         light: {
-          primary: "#93BBFB",
-          "primary-content": "#212638",
-          secondary: "#DAE8FF",
+          primary: "#1F8D99",
+          "primary-content": "#FFFFFF",
+          secondary: "#1F8D9930",
           "secondary-content": "#212638",
-          accent: "#93BBFB",
+          accent: "#1F8D99",
           "accent-content": "#212638",
           neutral: "#212638",
           "neutral-content": "#ffffff",
           "base-100": "#ffffff",
           "base-200": "#f4f8ff",
-          "base-300": "#DAE8FF",
+          "base-300": "#1F8D9930",
           "base-content": "#212638",
           info: "#93BBFB",
           success: "#34EEB6",
@@ -41,16 +50,16 @@ module.exports = {
       },
       {
         dark: {
-          primary: "#212638",
-          "primary-content": "#F9FBFF",
-          secondary: "#323f61",
+          primary: "#33EAFF",
+          "primary-content": colors.neutral['900'],
+          secondary: "#33EAFF70",
           "secondary-content": "#F9FBFF",
-          accent: "#4969A6",
+          accent: "#33EAFF",
           "accent-content": "#F9FBFF",
           neutral: "#F9FBFF",
           "neutral-content": "#385183",
-          "base-100": "#385183",
-          "base-200": "#2A3655",
+          "base-100": "#000000",
+          "base-200": "#0F172A",
           "base-300": "#212638",
           "base-content": "#F9FBFF",
           info: "#385183",

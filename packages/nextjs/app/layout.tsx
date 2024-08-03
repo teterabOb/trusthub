@@ -5,8 +5,8 @@ import "~~/styles/globals.css";
 import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 
 export const metadata = getMetadata({
-  title: "Scaffold-ETH 2 App",
-  description: "Built with 🏗 Scaffold-ETH 2",
+  title: "Protocolo de reputación | TrustHub",
+  description: "Protocolo de reputación para la confianza en los usuarios dentro de la industria del real estate.",
 });
 
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
