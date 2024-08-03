@@ -5,6 +5,5 @@
   "tabWidth": 2,
   "trailingComma": "all",
   "importOrder": ["^react$", "^next/(.*)$", "<THIRD_PARTY_MODULES>", "^@heroicons/(.*)$", "^~~/(.*)$"],
-  "importOrderSortSpecifiers": true,
-  "plugins": ["@trivago/prettier-plugin-sort-imports"]
+  "importOrderSortSpecifiers": true
 }
