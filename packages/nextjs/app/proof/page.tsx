@@ -1,10 +1,50 @@
 "use client";
-
+import { IDKitWidget, VerificationLevel, ISuccessResult } from '@worldcoin/idkit'
 import type { NextPage } from "next";
+import axios from 'axios';
 
 const Proof: NextPage = () => {
+  const onSuccess = (result: ISuccessResult) => {
+    // This is where you should perform frontend actions once a user has been verified
+    console.log('Proof received:', result);
+  }
+
+  const verifyProof = async (proof: ISuccessResult) => {
+    console.log('Verifying proof:', proof);
+
+    // De la prueba vamos a guardar el Nullifier Hash
+    // Este es un valor unico por cada action, por lo que
+    // este sera nuestro identificador unico
+    
+    try {
+      const response = await axios.post('/api/verify', { proof });
+      console.log('Verification response:', response.data);
+    } catch (error) {
+      console.error('Failed to verify proof:', error);
+      throw new Error('This is a mockup error');
+    }
+  };
+
+  const proofResponse = {
+    "verification_level": "orb",
+    "proof": "0x2f87a182565d7f0abb1d1081f4cc973be1f925d85989fbdf5ce1ace2425093300d375b6cc334454cfe523a2fbb241b4398ab030dd45511ed6fad37479de74d652cee36009b77eed79bdf5a2fb4b1a1d8e967c05dbf50d36310088c1cbe3d9010055c799ef6e8677930b674034201355652a0e55e32e73835168b916847a8d93e2ef361a894c328b1090bc131408301a8d794eb0eb78ef682a75c500e3e7ef2e61b46107f365809c857c70afcf9e51225e0cdb5803074b2df2f0288166ee5b42d01f76ba6a75f7bf50969b1501cc8222b3718d2c75e6a2c9fa4481e271f18cf080fcddabef0e3202298911d897ab1367a3e55252679c8f8985f9b541e7f6bb344",
+    "merkle_root": "0x29bfd71235061ae4317ac1fee537077fe96ee8fe8f4375ab434c18aa3a880ded",
+    "nullifier_hash": "0x04a74bd57677629286c6e13289c00029dc776595eb368382ccc69d65b604a0ad",
+    "credential_type": "orb"
+  }
+
   return (
     <>
+      <IDKitWidget
+        app_id="app_b5bf70a63e4ecd0be5f1b754b6675728" // obtained from the Developer Portal
+        action="verify-identity" // this is your action id from the Developer Portal
+        onSuccess={onSuccess} // callback when the modal is closed
+        handleVerify={verifyProof} // optional callback when the proof is received
+        verification_level={VerificationLevel.Device}
+        signal={"hola mundo"}
+      >
+        {({ open }) => <button className='btn btn-primary' onClick={open}>Verify with World ID</button>}
+      </IDKitWidget>
       <div className="flex items-center flex-col flex-grow pt-10 gap-4">
         <h2 className="text-xl">Parámetros enviados al circom</h2>
         <div className="mockup-code bg-primary">
