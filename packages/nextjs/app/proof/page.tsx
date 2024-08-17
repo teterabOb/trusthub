@@ -15,7 +15,7 @@ const Proof: NextPage = () => {
     // De la prueba vamos a guardar el Nullifier Hash
     // Este es un valor unico por cada action, por lo que
     // este sera nuestro identificador unico
-    
+
     try {
       const response = await axios.post('/api/verify', { proof });
       console.log('Verification response:', response.data);
