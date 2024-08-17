@@ -1,14 +1,16 @@
 "use client";
 import { IDKitWidget, VerificationLevel, ISuccessResult } from '@worldcoin/idkit'
 import type { NextPage } from "next";
-import axios from 'axios';
 
 const Proof: NextPage = () => {
   const onSuccess = (result: ISuccessResult) => {
+    console.log('User verified:', result);
+    
     // This is where you should perform frontend actions once a user has been verified
   }
 
   const verifyProof = async (proof: ISuccessResult) => {
+    console.log('Verifying proof:', proof);
     // De la prueba vamos a guardar el Nullifier Hash
     // Este es un valor unico por cada action, por lo que
     // este sera nuestro identificador unico
