@@ -39,6 +39,7 @@ const Proof: NextPage = () => {
 
   return (
     <>
+    <p>Aqui se agregaron las pruebas</p>
       <IDKitWidget
         app_id="app_b5bf70a63e4ecd0be5f1b754b6675728" // obtained from the Developer Portal
         action="verify-identity" // this is your action id from the Developer Portal
