@@ -16,6 +16,7 @@ const Proof: NextPage = () => {
   }
 
   const verifyProof = async (proof: ISuccessResult) => {
+    console.log('Verifying proof:', proof);
     //console.log('Verifying proof:', proof);
     // De la prueba vamos a guardar el Nullifier Hash
     // Este es un valor unico por cada action, por lo que
