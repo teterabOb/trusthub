@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { MdVerifiedUser } from "react-icons/md";
+//import { MdVerifiedUser } from "react-icons/md";
 
 export const CardUser = () => {
   return (
@@ -14,7 +14,7 @@ export const CardUser = () => {
           alt="user"
         />
         <div style={{ background: "#33EAFF" }} className="rounded-full h-10 w-10 flex justify-center items-center ">
-          <MdVerifiedUser color="0F172A" size={25} />
+          {/* <MdVerifiedUser color="0F172A" size={25} /> */}
         </div>
         <h1 className="font-semibold text-xl m-0 p-0">Elon</h1>
         <p className="font-regular text-sm text-gray-300 m-0 p-0">Propietario</p>
