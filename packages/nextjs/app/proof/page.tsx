@@ -1,6 +1,7 @@
 "use client";
 import { IDKitWidget, VerificationLevel, ISuccessResult } from '@worldcoin/idkit'
 import type { NextPage } from "next";
+import Link from 'next/link'
 
 const Proof: NextPage = () => {
   const onSuccess = (result: ISuccessResult) => {
@@ -36,9 +37,16 @@ const Proof: NextPage = () => {
     "credential_type": "orb"
   }
   */
+  
+  //const endpointApi = `https://id.worldcoin.org/authorize?response_type=code&redirect_uri=https://trusthub-ml.vercel.app/&scope=openid+profile+email&client_id=app_b5bf70a63e4ecd0be5f1b754b6675728`
+  const endpointApi = `https://id.worldcoin.org/authorize?response_type=code&redirect_uri=https://api-betrusty.vercel.app/worldid/callback&scope=openid+profile+email&client_id=app_b5bf70a63e4ecd0be5f1b754b6675728`
 
   return (
     <>
+    <Link href={endpointApi}><button className='btn btn-primary' >Validar WorldID</button></Link>
+    <button className='btn btn-primary' onClick={() => window.location.href = '/proof'}>Conectar Github</button>
+
+
     <p>Aqui se agregaron las pruebas</p>
       <IDKitWidget
         app_id="app_b5bf70a63e4ecd0be5f1b754b6675728" // obtained from the Developer Portal
