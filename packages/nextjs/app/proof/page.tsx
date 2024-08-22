@@ -3,10 +3,7 @@ import { IDKitWidget, VerificationLevel, ISuccessResult } from '@worldcoin/idkit
 import type { NextPage } from "next";
 import Link from 'next/link'
 
-
 const Proof: NextPage = () => {
-
-
   const onSuccess = (result: ISuccessResult) => {
     console.log('User verified:', result);
     // This is where you should perform frontend actions once a user has been verified
@@ -48,7 +45,6 @@ const Proof: NextPage = () => {
     <>
     <Link href={endpointApi}><button className='btn btn-primary' >Validar WorldID</button></Link>
     <button className='btn btn-primary' onClick={() => window.location.href = '/proof'}>Conectar Github</button>
-
 
     <p>Aqui se agregaron las pruebas</p>
       <IDKitWidget
