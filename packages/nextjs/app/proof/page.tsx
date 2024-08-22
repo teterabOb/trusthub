@@ -2,13 +2,10 @@
 import { IDKitWidget, VerificationLevel, ISuccessResult } from '@worldcoin/idkit'
 import type { NextPage } from "next";
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
+
 
 const Proof: NextPage = () => {
-  const searchParams = useSearchParams()
-  const search = searchParams.get('search')
 
-  console.log('Search:', search);
 
   const onSuccess = (result: ISuccessResult) => {
     console.log('User verified:', result);

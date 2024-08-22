@@ -1,25 +1,29 @@
 "use client";
 
-import { DebugContracts } from "./debug/_components/DebugContracts";
+import Image from "next/image";
 import type { NextPage } from "next";
-import { useAccount } from "wagmi";
-import { Address } from "~~/components/scaffold-eth";
+import Link from "next/link";
 
 const Home: NextPage = () => {
-  const { address: connectedAddress } = useAccount();
+
+  const endpointApi = `https://id.worldcoin.org/authorize?response_type=code&redirect_uri=https://api-betrusty.vercel.app/worldid/callback&scope=openid+profile+email&client_id=app_b5bf70a63e4ecd0be5f1b754b6675728`;
 
   return (
     <>
       <div className="flex items-center flex-col flex-grow pt-10">
-        <div className="px-5">
-          <h1 className="text-center">
-            <span className="block text-4xl font-bold">Verificar mediante el protocolo</span>
-          </h1>
-          <div className="flex justify-center items-center space-x-2 flex-col sm:flex-row">
-            <p className="my-2 font-normal">Billetera conectada:</p>
-            <Address address={connectedAddress} />
+        <div className="card card-side bg-base-100 shadow-xl px-6">
+          <figure className="py-4 ">
+            <Image width={100} height={100} src="/images/ok.png" alt="trust" />
+          </figure>
+          <div className="card-body">
+            <h2 className="card-title">Welcome!</h2>
+            <p>Click the button to join</p>
+            <div className="card-actions justify-end">
+                        <Link href={endpointApi}>
+            <button className="btn btn-primary">Validar WorldID</button>
+          </Link>
+            </div>
           </div>
-          <DebugContracts />
         </div>
       </div>
     </>
