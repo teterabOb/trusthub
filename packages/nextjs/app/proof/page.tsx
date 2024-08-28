@@ -1,14 +1,17 @@
 "use client";
 import { IDKitWidget, VerificationLevel, ISuccessResult } from '@worldcoin/idkit'
 import type { NextPage } from "next";
-import axios from 'axios';
+import Link from 'next/link'
 
 const Proof: NextPage = () => {
   const onSuccess = (result: ISuccessResult) => {
+    console.log('User verified:', result);
     // This is where you should perform frontend actions once a user has been verified
   }
 
   const verifyProof = async (proof: ISuccessResult) => {
+    console.log('Verifying proof:', proof);
+    //console.log('Verifying proof:', proof);
     // De la prueba vamos a guardar el Nullifier Hash
     // Este es un valor unico por cada action, por lo que
     // este sera nuestro identificador unico
@@ -34,9 +37,16 @@ const Proof: NextPage = () => {
     "credential_type": "orb"
   }
   */
+  
+  //const endpointApi = `https://id.worldcoin.org/authorize?response_type=code&redirect_uri=https://trusthub-ml.vercel.app/&scope=openid+profile+email&client_id=app_b5bf70a63e4ecd0be5f1b754b6675728`
+  const endpointApi = `https://id.worldcoin.org/authorize?response_type=code&redirect_uri=https://api-betrusty.vercel.app/worldid/callback&scope=openid+profile+email&client_id=app_b5bf70a63e4ecd0be5f1b754b6675728`
 
   return (
     <>
+    <Link href={endpointApi}><button className='btn btn-primary' >Validar WorldID</button></Link>
+    <button className='btn btn-primary' onClick={() => window.location.href = '/proof'}>Conectar Github</button>
+
+    <p>Aqui se agregaron las pruebas</p>
       <IDKitWidget
         app_id="app_b5bf70a63e4ecd0be5f1b754b6675728" // obtained from the Developer Portal
         action="verify-identity" // this is your action id from the Developer Portal
