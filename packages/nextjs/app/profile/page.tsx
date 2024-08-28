@@ -27,6 +27,7 @@ function Search() {
 const Profile: NextPage = () => {
   const urlLoginGithub: string = `https://api-betrusty.vercel.app/github/login`;
   const urlLoginMl: string = `https://api-betrusty.vercel.app/ml/login`;
+
   const { email } = useSearchParamsContext();
 
   //useEffect(() => { }, [email]);
@@ -48,6 +49,10 @@ const Profile: NextPage = () => {
 
   const getUrlGithub = () => {
     return `${urlLoginGithub}?worldid_email=${email}`;
+  };
+
+  const getUrlMl = () => { 
+    return `${urlLoginMl}?worldid_email=${email}&country_code=CL`;
   };
 
   useEffect(() => {
@@ -73,7 +78,7 @@ const Profile: NextPage = () => {
             </label>
           </div>
           <label>Mercado Libre</label>
-          <Link href={urlLoginMl}>
+          <Link href={getUrlMl()}>
             <button className="btn btn-primary">Connect Mercado Libre</button>
           </Link>
           <div className="form-control">

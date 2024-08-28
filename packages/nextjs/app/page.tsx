@@ -1,11 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import type { NextPage } from "next";
 import Link from "next/link";
+import type { NextPage } from "next";
 
 const Home: NextPage = () => {
-
   const endpointApi = `https://id.worldcoin.org/authorize?response_type=code&redirect_uri=https://api-betrusty.vercel.app/worldid/callback&scope=openid+profile+email&client_id=app_b5bf70a63e4ecd0be5f1b754b6675728`;
 
   return (
@@ -19,9 +18,9 @@ const Home: NextPage = () => {
             <h2 className="card-title">Welcome!</h2>
             <p>Click the button to join</p>
             <div className="card-actions justify-end">
-                        <Link href={endpointApi}>
-            <button className="btn btn-primary">Validar WorldID</button>
-          </Link>
+              <Link href={endpointApi}>
+                <button className="btn btn-primary">Validar WorldID</button>
+              </Link>
             </div>
           </div>
         </div>
